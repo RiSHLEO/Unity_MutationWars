@@ -1,21 +1,25 @@
-using UnityEngine;
-using Photon.Pun;
-using TMPro;
-using Photon.Pun.UtilityScripts;
 using System.Collections;
-
+using Photon.Pun;
+using Photon.Pun.UtilityScripts;
+using UnityEngine;
 
 public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
 {
     private XPManager _xpmanager;
     private NetworkManager _networkmanager;
 
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private ShootingDataSO _shootingData;
+
     [Header("Mutation Details")]
-    public float _cooldown = 4f;
+    public float _cooldown = 10f;
     private bool _mutationReady = true;
+    public float _xpAmount = 20;
 
     [Header("Form Data")]
-    private int _currentFormIndex;
+    public int _currentFormIndex { get; private set; }
+
+    public bool _canMove = true;
 
     private void Awake()
     {
@@ -25,7 +29,7 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
 
     private void Update()
     {
-        if(photonView.IsMine && _mutationReady)
+        if (photonView.IsMine && _mutationReady)
             OnPressMutate();
     }
 
@@ -45,13 +49,13 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
 
         Veil otherVeil = otherPlayer.GetComponent<Veil>();
 
-        if(otherVeil != null && otherVeil.IsInvulnerable) return;
+        if (otherVeil != null && otherVeil.IsInvulnerable) return;
 
         if (Beats(_currentFormIndex, otherPlayer._currentFormIndex))
         {
             PhotonNetwork.LocalPlayer.AddScore(10);
-            _xpmanager.AddEnergy(20);
-            //otherPlayer.photonView.RPC(nameof(LoseEnergy), otherPlayer.photonView.Owner, 10);
+            _xpmanager.AddEnergy((int)_xpAmount);
+            otherPlayer.photonView.Owner.AddScore(-5);
             otherPlayer.photonView.RPC(nameof(MutateToForm), otherPlayer.photonView.Owner, _currentFormIndex, 10);
         }
     }
@@ -86,12 +90,12 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
     }
 
     [PunRPC]
-    private void MutateToForm(int formIndex, int loseenergyAmount)
+    private void MutateToForm(int formIndex, int loseEnergyAmount)
     {
         if (!photonView.IsMine) return;
         if (_currentFormIndex == formIndex) return;
 
-        _xpmanager.SpendEnergy(loseenergyAmount);
+        _xpmanager.SpendEnergy(loseEnergyAmount);
 
         Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;
@@ -117,16 +121,25 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
         StartCoroutine(AbilityCooldownRoutine(_cooldown));
     }
 
-    [PunRPC]
-    private void LoseEnergy(int amount)
-    {
-        _xpmanager.SpendEnergy(amount);
-    }
-
-    IEnumerator AbilityCooldownRoutine(float cooldown)
+    private IEnumerator AbilityCooldownRoutine(float cooldown)
     {
         _mutationReady = false;
         yield return new WaitForSeconds(cooldown);
         _mutationReady = true;
+    }
+
+    [PunRPC]
+    public void SpawnBulletInOther(Vector3 startPos, Vector3 dir, float timestamp)
+    {
+        float lag = (float)(PhotonNetwork.Time - timestamp);
+        Vector3 adjustedPos = startPos + dir * _shootingData.BulletSpeed * lag;
+        GameObject bullet = Instantiate(_bulletPrefab, adjustedPos, Quaternion.identity);
+        bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * _shootingData.BulletSpeed;
+    }
+
+    [PunRPC]
+    private void ReduceXPOnHit(int damage)
+    {
+        _xpmanager.SpendEnergy(damage);
     }
 }

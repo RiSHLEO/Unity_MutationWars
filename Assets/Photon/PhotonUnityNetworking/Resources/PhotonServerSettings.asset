@@ -49,6 +49,9 @@ MonoBehaviour:
   - ExecuteKnockbackRPC
   - ApplyKnockbackState
   - RequestDestroy
+  - SpawnBullet
+  - SpawnBulletInOther
+  - ReduceXPOnHit
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

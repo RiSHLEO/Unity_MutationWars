@@ -25,14 +25,16 @@ public class Entity : MonoBehaviourPunCallbacks
     [Header("Skill Details")]
     [SerializeField] private Skill_Base mainSkill;
     private Skill_Knockback _knockbackSkill;
+    private MutationHandler _mutationHandler;
 
     protected virtual void Awake()
     {
         StateMachine = new StateMachine();
         InputSet = new PlayerInputSet();
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
         SkillManager = GetComponent<Player_SkillManager>();
+        _mutationHandler = GetComponent<MutationHandler>();
+        anim = GetComponentInChildren<Animator>();
         _knockbackSkill = GetComponentInChildren<Skill_Knockback>();
 
         IdleState = new Player_IdleState(this, StateMachine, "idle");
@@ -71,7 +73,7 @@ public class Entity : MonoBehaviourPunCallbacks
 
     public void SetVelocity(float xVelocity, float yVelocity)
     {
-        if (photonView.IsMine)
+        if (photonView.IsMine && _mutationHandler._canMove)
             rb.linearVelocity = new Vector2(xVelocity, yVelocity);
     }
 

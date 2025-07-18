@@ -1,9 +1,11 @@
-using Photon.Pun;
-using UnityEngine;
-using Photon.Pun.UtilityScripts;
+using System.Collections;
 using System.Linq;
+using Photon.Pun;
+using Photon.Pun.UtilityScripts;
 using TMPro;
-using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class SceneScoreManager : MonoBehaviourPunCallbacks
 {
@@ -11,18 +13,52 @@ public class SceneScoreManager : MonoBehaviourPunCallbacks
     [SerializeField] private Transform _leaderboardHolder;
     [SerializeField] private GameObject _playerItemPrefab;
     [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _timerText;
+    [SerializeField] private GameObject _returnButton;
+
+    private double _startTime;
+    private bool _isGameEnded = false;
+    public float _gameDuration = 10f;
+
     private int _currentScore = 0;
 
-    private void Start()
+    public override void OnJoinedRoom()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            _startTime = PhotonNetwork.Time;
+            Hashtable props = new Hashtable { { "StartTime", _startTime } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+        }
+
+        StartCoroutine(WaitForStartTime());
+
         InvokeRepeating(nameof(UpdateLeaderboard), 0.5f, 0.5f);
         UpdateScoreText();
     }
 
-
     private void Update()
     {
+        if (_isGameEnded)
+        {
+            _leaderboardUI.SetActive(true);
+            return;
+        }
+
+        if (_startTime <= 0) return;
+
+        CalculateTimer();
         _leaderboardUI.SetActive(Input.GetKey(KeyCode.Tab));
+    }
+
+    private void CalculateTimer()
+    {
+        double elapsed = PhotonNetwork.Time - _startTime;
+        int remaining = (int)Mathf.Max(0f, _gameDuration - (float)elapsed);
+        _timerText.text = remaining.ToString();
+
+        if (remaining <= 0f && !_isGameEnded)
+            EndGame();
     }
 
     private void UpdateLeaderboard()
@@ -58,5 +94,36 @@ public class SceneScoreManager : MonoBehaviourPunCallbacks
             _currentScore = newScore;
             _scoreText.text = "Score: " + _currentScore;
         }
+    }
+
+    private void EndGame()
+    {
+        _isGameEnded = true;
+        _returnButton.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ReturnToMainMenu()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
+
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private IEnumerator WaitForStartTime()
+    {
+        while (PhotonNetwork.CurrentRoom == null)
+            yield return null;
+
+        while (!PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("StartTime") ||
+               PhotonNetwork.CurrentRoom.CustomProperties["StartTime"] == null)
+        {
+            yield return null;
+        }
+
+        _startTime = (double)PhotonNetwork.CurrentRoom.CustomProperties["StartTime"];
     }
 }

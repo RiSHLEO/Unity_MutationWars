@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae5f4627cb26354489235fc82e56237, type: 3}
+  m_Name: StandardShooting
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 8735791776398003857, guid: c804894f730bd2b4fbad456eb7fd83dc, type: 3}
+  FireRate: 0.5
+  BulletSpeed: 20
+  Damage: 10
+  Range: 8
+  shootingType: 0
+  BulletsPerShot: 1
+  SpreadAngle: 30
