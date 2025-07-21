@@ -83,9 +83,6 @@ public class Shoot : MonoBehaviourPunCallbacks
         Vector3 startPos = transform.position;
         GameObject bullet = Instantiate(_bulletPrefab, startPos, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * _shootingData.BulletSpeed;
-
         photonView.RPC(nameof(_mutationHandler.SpawnBulletInOther), RpcTarget.Others, startPos, direction, (float)PhotonNetwork.Time);
     }
-
-
 }

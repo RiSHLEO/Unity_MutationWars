@@ -294,7 +294,7 @@ MonoBehaviour:
   _shootingData: {fileID: 11400000, guid: 5903b3dc0084dac4fa79b8b66bad4da6, type: 2}
   _firePoint: {fileID: 6418230638823775074}
   _bulletPrefab: {fileID: 8735791776398003857, guid: c804894f730bd2b4fbad456eb7fd83dc, type: 3}
-  _mutationHandler: {fileID: 0}
+  _mutationHandler: {fileID: 837879321834744037}
 --- !u!1 &4728577812947737661
 GameObject:
   m_ObjectHideFlags: 0

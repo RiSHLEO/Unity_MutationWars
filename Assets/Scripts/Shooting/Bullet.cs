@@ -24,6 +24,9 @@ public class Bullet : MonoBehaviourPunCallbacks
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Vector3 hitPosition = transform.position;
+        PhotonNetwork.Instantiate("VFX_Hit", hitPosition, Quaternion.identity);
+
         if (other.CompareTag("Player"))
         {
             PhotonView targetPhotonView = other.GetComponent<PhotonView>();
@@ -34,6 +37,6 @@ public class Bullet : MonoBehaviourPunCallbacks
             }
         }
 
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

@@ -8,10 +8,12 @@ public class XpMultiplierSO : PowerupSO
     public override void ApplyPowerup(GameObject target)
     {
         target.GetComponent<MutationHandler>()._xpAmount *= _xpMultiplier;
+        XPManager.Instance._xpPerInterval += 2;
     }
 
     public override void RemovePowerup(GameObject target)
     {
         target.GetComponent<MutationHandler>()._xpAmount /= _xpMultiplier;
+        XPManager.Instance._xpPerInterval += -2;
     }
 }

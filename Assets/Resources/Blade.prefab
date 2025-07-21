@@ -363,6 +363,7 @@ MonoBehaviour:
   _shootingData: {fileID: 11400000, guid: 7c8770af86b837a48880cf122cde26c2, type: 2}
   _firePoint: {fileID: 7903175476823087387}
   _bulletPrefab: {fileID: 8735791776398003857, guid: c804894f730bd2b4fbad456eb7fd83dc, type: 3}
+  _mutationHandler: {fileID: 0}
 --- !u!1 &7783399263791904350
 GameObject:
   m_ObjectHideFlags: 0
