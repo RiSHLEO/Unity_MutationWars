@@ -4,12 +4,13 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 
-public class TrainedAgent : Agent
+public class MainTrainedAgent : Agent
 {
     [SerializeField] private Transform _goal;
-    [SerializeField] private float _moveSpeed = 6f;
+    [SerializeField] private float _moveSpeed = 12f;
 
     private Rigidbody2D _rb;
+    private Rigidbody2D _goalRb;
     private SpriteRenderer _spriteRenderer;
     [HideInInspector] public int CurrentEpisode = 0;
     [HideInInspector] public float CummulativeReward = 0f;
@@ -27,6 +28,7 @@ public class TrainedAgent : Agent
         if (player != null)
             _goal = player.transform;
 
+        _goalRb = _goal.GetComponent<Rigidbody2D>();
         CurrentEpisode = 0;
         CummulativeReward = 0f;
     }
@@ -80,6 +82,7 @@ public class TrainedAgent : Agent
         sensor.AddObservation(velocity.y);
         sensor.AddObservation(toGoal.x);
         sensor.AddObservation(toGoal.y);
+        sensor.AddObservation(_goalRb.linearVelocity / _moveSpeed);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -149,7 +152,7 @@ public class TrainedAgent : Agent
         }
     }
 
-    private bool IsPositionValid(Vector3 position, float radius = 1f)
+    private bool IsPositionValid(Vector3 position, float radius = 1.5f)
     {
         int wallLayerMask = LayerMask.GetMask("Wall");
         Collider2D hit = Physics2D.OverlapCircle(position, radius, wallLayerMask);

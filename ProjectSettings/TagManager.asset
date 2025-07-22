@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Goal
   - Agent
+  - TrainedAgent
   layers:
   - Default
   - TransparentFX

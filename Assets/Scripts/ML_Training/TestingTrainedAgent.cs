@@ -4,19 +4,16 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 
-public class TrainingAgent : Agent
+public class TestingTrainedAgent : Agent
 {
     [SerializeField] private Transform _goal;
-    [SerializeField] private SpriteRenderer _groundRenderer;
-    [SerializeField] private float _moveSpeed = 6f;
+    [SerializeField] private float _moveSpeed = 3f;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
     [HideInInspector] public int CurrentEpisode = 0;
     [HideInInspector] public float CummulativeReward = 0f;
 
-    private Color _defaultGroundColor;
-    private Coroutine _flashGroundCoroutine;
     private float _distanceOld;
 
     public override void Initialize()
@@ -32,38 +29,12 @@ public class TrainingAgent : Agent
     public override void OnEpisodeBegin()
     {
 
-        if (_groundRenderer != null && CummulativeReward != 0f)
-        {
-            Color flashColor = (CummulativeReward > 0f) ? Color.green : Color.red;
-
-            if (_flashGroundCoroutine != null)
-            {
-                StopCoroutine(_flashGroundCoroutine);
-            }
-
-            _flashGroundCoroutine = StartCoroutine(FlashGround(flashColor, 3.0f));
-        }
-
         _rb.linearVelocity = Vector2.zero;
         CurrentEpisode++;
         CummulativeReward = 0f;
 
         SpawnObjects();
         _distanceOld = Vector2.Distance(transform.localPosition, _goal.localPosition);
-    }
-
-    private IEnumerator FlashGround(Color targetColor, float duration)
-    {
-        float elapsedTime = 0f;
-
-        _groundRenderer.color = targetColor;
-
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            _groundRenderer.color = Color.Lerp(targetColor, _defaultGroundColor, elapsedTime / duration);
-            yield return null;
-        }
     }
 
     private void SpawnObjects()

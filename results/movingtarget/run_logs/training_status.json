@@ -1,0 +1,47 @@
+{
+    "Agent": {
+        "checkpoints": [
+            {
+                "steps": 499974,
+                "file_path": "results\\movingtarget\\Agent\\Agent-499974.onnx",
+                "reward": 2.792997159364616,
+                "creation_time": 1753163195.5803702,
+                "auxillary_file_paths": [
+                    "results\\movingtarget\\Agent\\Agent-499974.pt"
+                ]
+            },
+            {
+                "steps": 999984,
+                "file_path": "results\\movingtarget\\Agent\\Agent-999984.onnx",
+                "reward": 2.895485858191977,
+                "creation_time": 1753163659.3468685,
+                "auxillary_file_paths": [
+                    "results\\movingtarget\\Agent\\Agent-999984.pt"
+                ]
+            },
+            {
+                "steps": 1000037,
+                "file_path": "results\\movingtarget\\Agent\\Agent-1000037.onnx",
+                "reward": 2.8915497281899056,
+                "creation_time": 1753163659.4502285,
+                "auxillary_file_paths": [
+                    "results\\movingtarget\\Agent\\Agent-1000037.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1000037,
+            "file_path": "results\\movingtarget\\Agent.onnx",
+            "reward": 2.8915497281899056,
+            "creation_time": 1753163659.4502285,
+            "auxillary_file_paths": [
+                "results\\movingtarget\\Agent\\Agent-1000037.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
