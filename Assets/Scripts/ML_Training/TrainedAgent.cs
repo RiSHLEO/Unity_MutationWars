@@ -4,10 +4,9 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 
-public class TrainingAgent : Agent
+public class TrainedAgent : Agent
 {
     [SerializeField] private Transform _goal;
-    [SerializeField] private SpriteRenderer _groundRenderer;
     [SerializeField] private float _moveSpeed = 6f;
 
     private Rigidbody2D _rb;
@@ -15,8 +14,6 @@ public class TrainingAgent : Agent
     [HideInInspector] public int CurrentEpisode = 0;
     [HideInInspector] public float CummulativeReward = 0f;
 
-    private Color _defaultGroundColor;
-    private Coroutine _flashGroundCoroutine;
     private float _distanceOld;
 
     public override void Initialize()
@@ -25,45 +22,23 @@ public class TrainingAgent : Agent
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+            _goal = player.transform;
+
         CurrentEpisode = 0;
         CummulativeReward = 0f;
     }
 
     public override void OnEpisodeBegin()
     {
-
-        if (_groundRenderer != null && CummulativeReward != 0f)
-        {
-            Color flashColor = (CummulativeReward > 0f) ? Color.green : Color.red;
-
-            if (_flashGroundCoroutine != null)
-            {
-                StopCoroutine(_flashGroundCoroutine);
-            }
-
-            _flashGroundCoroutine = StartCoroutine(FlashGround(flashColor, 3.0f));
-        }
-
         _rb.linearVelocity = Vector2.zero;
         CurrentEpisode++;
         CummulativeReward = 0f;
 
         SpawnObjects();
         _distanceOld = Vector2.Distance(transform.localPosition, _goal.localPosition);
-    }
-
-    private IEnumerator FlashGround(Color targetColor, float duration)
-    {
-        float elapsedTime = 0f;
-
-        _groundRenderer.color = targetColor;
-
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            _groundRenderer.color = Color.Lerp(targetColor, _defaultGroundColor, elapsedTime / duration);
-            yield return null;
-        }
     }
 
     private void SpawnObjects()
@@ -84,21 +59,6 @@ public class TrainingAgent : Agent
         } while (!IsPositionValid(agentPos, 0.5f));
 
         transform.localPosition = agentPos;
-
-        Vector3 goalPos = Vector3.zero;
-        attempts = 0;
-        do
-        {
-            goalPos = new Vector3(Random.Range(-23f, 20f), Random.Range(-9f, 11f), 0f);
-            attempts++;
-            if (attempts > 100)
-            {
-                Debug.LogWarning("Failed to find valid goal spawn position after 100 attempts.");
-                break;
-            }
-        } while (!IsPositionValid(goalPos, 0.5f));
-
-        _goal.localPosition = goalPos;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -149,7 +109,7 @@ public class TrainingAgent : Agent
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject != this.gameObject && other.CompareTag("Goal"))
+        if (other.gameObject != this.gameObject && other.CompareTag("Player"))
         {
             AddReward(3.0f);
             CummulativeReward = GetCumulativeReward();

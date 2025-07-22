@@ -1215,9 +1215,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 6e5c83c9cfdb9bd40b8f7ef3d9129ec6, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 2
+  m_BehaviorType: 0
   m_BehaviorName: Agent
   TeamId: 0
   m_UseChildSensors: 1
@@ -1240,7 +1240,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 10000
-  _goal: {fileID: 1104075368337312244}
+  _goal: {fileID: 0}
   _groundRenderer: {fileID: 7581962596832241934}
   _moveSpeed: 6
   CurrentEpisode: 0
