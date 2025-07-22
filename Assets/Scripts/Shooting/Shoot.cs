@@ -6,7 +6,6 @@ public class Shoot : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Transform centerPoint;
     [SerializeField] private float radius = 1f;
-    [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private ShootingDataSO _shootingData;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _bulletPrefab;
@@ -83,6 +82,12 @@ public class Shoot : MonoBehaviourPunCallbacks
         Vector3 startPos = transform.position;
         GameObject bullet = Instantiate(_bulletPrefab, startPos, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * _shootingData.BulletSpeed;
+        bullet.GetComponent<Bullet>().SetData(_shootingData);
         photonView.RPC(nameof(_mutationHandler.SpawnBulletInOther), RpcTarget.Others, startPos, direction, (float)PhotonNetwork.Time);
+    }
+
+    public void SetMutationHandler(MutationHandler handler)
+    {
+        _mutationHandler = handler;
     }
 }

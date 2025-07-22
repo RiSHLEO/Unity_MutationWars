@@ -66,7 +66,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         SpawnPlayer();
     }
 
-    private void SpawnPlayer()
+    public void SpawnPlayer()
     {
         int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
 

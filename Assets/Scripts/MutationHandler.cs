@@ -109,6 +109,10 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
             CameraFollowPlayer camFollow = FindFirstObjectByType<CameraFollowPlayer>();
             if (camFollow != null)
                 camFollow.SetFollow(newForm.transform);
+
+            Shoot shoot = newForm.GetComponentInChildren<Shoot>();
+            if (shoot != null)
+                shoot.SetMutationHandler(newForm.GetComponent<MutationHandler>());
         }
     }
 

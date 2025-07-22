@@ -14,7 +14,7 @@ public class XPManager : MonoBehaviour
     public static XPManager Instance { get; private set; }
 
     public int _xpPerInterval = 1;
-    [SerializeField] private float _interval = 2;
+    [SerializeField] private float _interval = 3;
     [SerializeField] private TextMeshProUGUI energyText;
     [SerializeField] private Image _xpFill;
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   FireRate: 0.5
   BulletSpeed: 20
   Damage: 10
-  Range: 3
+  Range: 5
   shootingType: 1
   BulletsPerShot: 3
   SpreadAngle: 30

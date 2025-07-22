@@ -189,8 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416d361e5415b06499392a0d83f20a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 0}
-  _shootingData: {fileID: 0}
+  _bulletPrefab: {fileID: 8735791776398003857, guid: c804894f730bd2b4fbad456eb7fd83dc, type: 3}
+  _shootingData: {fileID: 11400000, guid: 7c8770af86b837a48880cf122cde26c2, type: 2}
   _cooldown: 4
   _xpAmount: 20
   _canMove: 1
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 7903175476823087387}
   - component: {fileID: 2179035730637219605}
   - component: {fileID: 3886586603097173195}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,11 +359,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerPoint: {fileID: 3882128107224361847}
   radius: 1
-  fireRate: 0.5
   _shootingData: {fileID: 11400000, guid: 7c8770af86b837a48880cf122cde26c2, type: 2}
   _firePoint: {fileID: 7903175476823087387}
   _bulletPrefab: {fileID: 8735791776398003857, guid: c804894f730bd2b4fbad456eb7fd83dc, type: 3}
-  _mutationHandler: {fileID: 0}
+  _mutationHandler: {fileID: 3116599494235938059}
 --- !u!1 &7783399263791904350
 GameObject:
   m_ObjectHideFlags: 0

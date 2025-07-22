@@ -8,10 +8,11 @@ public class Bullet : MonoBehaviourPunCallbacks
     private Vector3 _startPosition;
     private float _range;
 
-    private void Start()
+    public void SetData(ShootingDataSO data)
     {
-        _startPosition = transform.position;
+        _shootingData = data;
         _range = _shootingData.Range;
+        _startPosition = transform.position;
     }
 
     private void Update()

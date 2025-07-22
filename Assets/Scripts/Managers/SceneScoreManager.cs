@@ -47,6 +47,12 @@ public class SceneScoreManager : MonoBehaviourPunCallbacks
 
         if (_startTime <= 0) return;
 
+        if (XPManager.Instance.currentEnergy == 0 && PhotonNetwork.LocalPlayer.GetScore() > 0)
+        {
+            PhotonNetwork.LocalPlayer.SetScore(0);
+            UpdateScoreText();
+        }
+
         CalculateTimer();
         _leaderboardUI.SetActive(Input.GetKey(KeyCode.Tab));
     }
@@ -91,7 +97,7 @@ public class SceneScoreManager : MonoBehaviourPunCallbacks
         int newScore = PhotonNetwork.LocalPlayer.GetScore();
         if (newScore != _currentScore)
         {
-            _currentScore = newScore;
+            _currentScore = Mathf.Max(0, newScore);
             _scoreText.text = "Score: " + _currentScore;
         }
     }

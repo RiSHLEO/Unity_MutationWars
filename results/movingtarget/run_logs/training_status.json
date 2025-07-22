@@ -2,24 +2,6 @@
     "Agent": {
         "checkpoints": [
             {
-                "steps": 499974,
-                "file_path": "results\\movingtarget\\Agent\\Agent-499974.onnx",
-                "reward": 2.792997159364616,
-                "creation_time": 1753163195.5803702,
-                "auxillary_file_paths": [
-                    "results\\movingtarget\\Agent\\Agent-499974.pt"
-                ]
-            },
-            {
-                "steps": 999984,
-                "file_path": "results\\movingtarget\\Agent\\Agent-999984.onnx",
-                "reward": 2.895485858191977,
-                "creation_time": 1753163659.3468685,
-                "auxillary_file_paths": [
-                    "results\\movingtarget\\Agent\\Agent-999984.pt"
-                ]
-            },
-            {
                 "steps": 1000037,
                 "file_path": "results\\movingtarget\\Agent\\Agent-1000037.onnx",
                 "reward": 2.8915497281899056,
@@ -27,15 +9,51 @@
                 "auxillary_file_paths": [
                     "results\\movingtarget\\Agent\\Agent-1000037.pt"
                 ]
+            },
+            {
+                "steps": 1236139,
+                "file_path": "results\\movingtarget\\Agent\\Agent-1236139.onnx",
+                "reward": null,
+                "creation_time": 1753176027.1655855,
+                "auxillary_file_paths": [
+                    "results\\movingtarget\\Agent\\Agent-1236139.pt"
+                ]
+            },
+            {
+                "steps": 1499975,
+                "file_path": "results\\movingtarget\\Agent\\Agent-1499975.onnx",
+                "reward": 2.9412614398791845,
+                "creation_time": 1753176426.2458434,
+                "auxillary_file_paths": [
+                    "results\\movingtarget\\Agent\\Agent-1499975.pt"
+                ]
+            },
+            {
+                "steps": 1999985,
+                "file_path": "results\\movingtarget\\Agent\\Agent-1999985.onnx",
+                "reward": 2.952356066618647,
+                "creation_time": 1753177098.0877872,
+                "auxillary_file_paths": [
+                    "results\\movingtarget\\Agent\\Agent-1999985.pt"
+                ]
+            },
+            {
+                "steps": 2000016,
+                "file_path": "results\\movingtarget\\Agent\\Agent-2000016.onnx",
+                "reward": 2.9519655292822145,
+                "creation_time": 1753177098.1615992,
+                "auxillary_file_paths": [
+                    "results\\movingtarget\\Agent\\Agent-2000016.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 1000037,
+            "steps": 2000016,
             "file_path": "results\\movingtarget\\Agent.onnx",
-            "reward": 2.8915497281899056,
-            "creation_time": 1753163659.4502285,
+            "reward": 2.9519655292822145,
+            "creation_time": 1753177098.1615992,
             "auxillary_file_paths": [
-                "results\\movingtarget\\Agent\\Agent-1000037.pt"
+                "results\\movingtarget\\Agent\\Agent-2000016.pt"
             ]
         }
     },

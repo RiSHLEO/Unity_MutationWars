@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 7195497995689215822}
   - component: {fileID: 1874416237956588365}
   - component: {fileID: 1701803170557463677}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 6418230638823775074}
   - component: {fileID: 171968247504715529}
   - component: {fileID: 4779955062601874741}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerPoint: {fileID: 7081910003898432117}
   radius: 1
-  fireRate: 0.8
   _shootingData: {fileID: 11400000, guid: 5903b3dc0084dac4fa79b8b66bad4da6, type: 2}
   _firePoint: {fileID: 6418230638823775074}
   _bulletPrefab: {fileID: 8735791776398003857, guid: c804894f730bd2b4fbad456eb7fd83dc, type: 3}
@@ -515,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8839085664240038776}
   - component: {fileID: 4410540572463487915}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skills_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

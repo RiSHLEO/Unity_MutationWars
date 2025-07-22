@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416d361e5415b06499392a0d83f20a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 0}
-  _shootingData: {fileID: 0}
+  _bulletPrefab: {fileID: 8735791776398003857, guid: c804894f730bd2b4fbad456eb7fd83dc, type: 3}
+  _shootingData: {fileID: 11400000, guid: 7c8770af86b837a48880cf122cde26c2, type: 2}
   _cooldown: 4
   _xpAmount: 20
   _canMove: 1
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 3066295631763900699}
   - component: {fileID: 7249635355768064894}
   - component: {fileID: 7222784280551618500}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4934529012705074018}
   - component: {fileID: 4665393802971313533}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Skill_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 8059403710538400786}
   - component: {fileID: 3017315982660112706}
   - component: {fileID: 8135274994652658779}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,8 +546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerPoint: {fileID: 12581940996572261}
   radius: 1
-  fireRate: 0.5
   _shootingData: {fileID: 11400000, guid: 7c8770af86b837a48880cf122cde26c2, type: 2}
   _firePoint: {fileID: 8059403710538400786}
   _bulletPrefab: {fileID: 8735791776398003857, guid: c804894f730bd2b4fbad456eb7fd83dc, type: 3}
-  _mutationHandler: {fileID: 0}
+  _mutationHandler: {fileID: 1499125743834467687}
