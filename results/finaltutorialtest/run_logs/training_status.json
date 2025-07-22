@@ -1,0 +1,47 @@
+{
+    "Agent": {
+        "checkpoints": [
+            {
+                "steps": 499962,
+                "file_path": "results\\finaltutorialtest\\Agent\\Agent-499962.onnx",
+                "reward": 1.333305871207267,
+                "creation_time": 1753148510.9620516,
+                "auxillary_file_paths": [
+                    "results\\finaltutorialtest\\Agent\\Agent-499962.pt"
+                ]
+            },
+            {
+                "steps": 999948,
+                "file_path": "results\\finaltutorialtest\\Agent\\Agent-999948.onnx",
+                "reward": 2.2043213732540607,
+                "creation_time": 1753148849.7424045,
+                "auxillary_file_paths": [
+                    "results\\finaltutorialtest\\Agent\\Agent-999948.pt"
+                ]
+            },
+            {
+                "steps": 1000012,
+                "file_path": "results\\finaltutorialtest\\Agent\\Agent-1000012.onnx",
+                "reward": 2.2043213732540607,
+                "creation_time": 1753148849.7843232,
+                "auxillary_file_paths": [
+                    "results\\finaltutorialtest\\Agent\\Agent-1000012.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1000012,
+            "file_path": "results\\finaltutorialtest\\Agent.onnx",
+            "reward": 2.2043213732540607,
+            "creation_time": 1753148849.7843232,
+            "auxillary_file_paths": [
+                "results\\finaltutorialtest\\Agent\\Agent-1000012.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Wall
+  - Goal
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - PlayerCollider
   - Bullet
   - MapBounds
-  - 
+  - Wall
   - 
   - 
   - 
