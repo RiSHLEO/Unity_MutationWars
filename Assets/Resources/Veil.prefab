@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 8735791776398003857, guid: c804894f730bd2b4fbad456eb7fd83dc, type: 3}
   _shootingData: {fileID: 11400000, guid: 7c8770af86b837a48880cf122cde26c2, type: 2}
+  _trailRenderer: {fileID: 0}
   _cooldown: 4
   _xpAmount: 20
   _canMove: 1

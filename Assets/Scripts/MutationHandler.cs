@@ -10,6 +10,7 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
 
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private ShootingDataSO _shootingData;
+    [SerializeField] private TrailRenderer _trailRenderer;
 
     [Header("Mutation Details")]
     public float _cooldown = 10f;
@@ -139,11 +140,24 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
         Vector3 adjustedPos = startPos + dir * _shootingData.BulletSpeed * lag;
         GameObject bullet = Instantiate(_bulletPrefab, adjustedPos, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * _shootingData.BulletSpeed;
+        bullet.GetComponent<Bullet>().SetData(_shootingData);
     }
 
     [PunRPC]
     private void ReduceXPOnHit(int damage)
     {
         _xpmanager.SpendEnergy(damage);
+    }
+
+    [PunRPC]
+    private void RPC_StartDashTrail()
+    {
+        _trailRenderer.emitting = true;
+    }
+
+    [PunRPC]
+    private void RPC_EndDashTrail()
+    {
+        _trailRenderer.emitting = false;
     }
 }

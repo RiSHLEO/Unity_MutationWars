@@ -1,5 +1,6 @@
 using Photon.Pun;
 using UnityEngine;
+using WebSocketSharp;
 
 public class Entity : MonoBehaviourPunCallbacks
 {
@@ -80,6 +81,7 @@ public class Entity : MonoBehaviourPunCallbacks
     [PunRPC]
     public void ExecuteKnockbackRPC()
     {
+        PhotonNetwork.Instantiate("VFX_Ability_Stone", transform.position, Quaternion.identity);
         _knockbackSkill.ExecuteKnockback();
     }
 

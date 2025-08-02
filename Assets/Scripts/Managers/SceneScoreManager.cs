@@ -33,6 +33,7 @@ public class SceneScoreManager : MonoBehaviourPunCallbacks
 
         StartCoroutine(WaitForStartTime());
 
+        PhotonNetwork.LocalPlayer.SetScore(0);
         InvokeRepeating(nameof(UpdateLeaderboard), 0.5f, 0.5f);
         UpdateScoreText();
     }
@@ -84,7 +85,15 @@ public class SceneScoreManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerPropertiesUpdate(Photon.Realtime.Player player, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        if (!changedProps.ContainsKey("score")) return;
+        if (changedProps.ContainsKey("score"))
+        {
+            int score = player.GetScore();
+            if (score < 0)
+            {
+                player.SetScore(0);
+                return;
+            }
+        }
 
         if (player == PhotonNetwork.LocalPlayer)
         {
@@ -97,7 +106,7 @@ public class SceneScoreManager : MonoBehaviourPunCallbacks
         int newScore = PhotonNetwork.LocalPlayer.GetScore();
         if (newScore != _currentScore)
         {
-            _currentScore = Mathf.Max(0, newScore);
+            _currentScore = newScore;
             _scoreText.text = "Score: " + _currentScore;
         }
     }

@@ -27,7 +27,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        Screen.SetResolution(800, 600, false);
+        Screen.SetResolution(1024, 576, false);
     }
 
     public void ChangeName(string name)

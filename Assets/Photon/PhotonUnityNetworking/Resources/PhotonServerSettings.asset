@@ -52,6 +52,12 @@ MonoBehaviour:
   - SpawnBullet
   - SpawnBulletInOther
   - ReduceXPOnHit
+  - RPC_EndDashTrail
+  - RPC_StartDashTrail
+  - RPC_EndInvul
+  - RPC_StartInvul
+  - RPC_EndInvulVisual
+  - RPC_StartInvulVisual
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0
