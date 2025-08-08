@@ -3,9 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartGame()
+    public void ActivateSceneCards()
     {
-        SceneManager.LoadScene("GameScene");
+
+    }
+
+    public void StartSinglePlayer()
+    {
+        SceneManager.LoadScene("SinglePlayerScene");
+    }
+
+    public void StartMultiPlayer()
+    {
+        SceneManager.LoadScene("MultiPlayerScene");
     }
 
     public void ReturnToMainMenu()
