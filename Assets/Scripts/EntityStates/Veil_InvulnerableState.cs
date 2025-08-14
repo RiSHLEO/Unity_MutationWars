@@ -15,6 +15,7 @@ public class Veil_InvulnerableState : EntityState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.VeilInvulSound);
 
         if (_invulSkill == null)
             _invulSkill = _skillManager?.Invul;

@@ -79,6 +79,7 @@ public class Shoot : MonoBehaviourPunCallbacks
 
     private void FireBullet(Vector3 direction)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ShootSound);
         Vector3 startPos = transform.position;
         GameObject bullet = Instantiate(_bulletPrefab, startPos, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().linearVelocity = direction * _shootingData.BulletSpeed;

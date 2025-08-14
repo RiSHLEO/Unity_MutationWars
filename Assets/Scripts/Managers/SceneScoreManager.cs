@@ -113,6 +113,7 @@ public class SceneScoreManager : MonoBehaviourPunCallbacks
 
     private void EndGame()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.GameOverSound);
         _isGameEnded = true;
         _returnButton.SetActive(true);
         Time.timeScale = 0f;

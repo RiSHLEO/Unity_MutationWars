@@ -18,6 +18,7 @@ public class Blade_DashState : EntityState
     public override void Enter()
     {
         base.Enter();
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.BladeDashSound);
         _trailRenderer.emitting = true;
         _dashDir = _entity.MoveInput != Vector2.zero ? _entity.MoveInput.normalized : Vector2.up;
         _stateTimer = _blade.DashDuration;

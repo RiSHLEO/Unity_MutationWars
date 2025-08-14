@@ -21,6 +21,7 @@ public class PowerupPickup : MonoBehaviour
 
         if (powerupManager != null && Powerup != null)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.PowerupPickupSound);
             powerupManager.PowerupApply(Powerup);
             _photonView.RPC(nameof(RequestDestroy), RpcTarget.MasterClient);
         }

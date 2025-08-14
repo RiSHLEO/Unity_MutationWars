@@ -63,11 +63,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         Debug.Log("Joined Room. Spawning Player...");
         _ConnectingScreen.SetActive(false);
+
+        string playfabName = PlayerPrefs.GetString("Username", "Player");
+        PhotonNetwork.LocalPlayer.NickName = playfabName;
         SpawnPlayer();
     }
 
     public void SpawnPlayer()
     {
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.BackgroundSound);
+
         int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
 
         int spawnIndex = Mathf.Clamp(playerCount - 1, 0, playerCount -  1);
@@ -77,7 +82,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         string prefabName = _formPrefabNames[formIndex];
         GameObject playerPrefab = PhotonNetwork.Instantiate(prefabName, spawnPosition, Quaternion.identity);
-        PhotonNetwork.LocalPlayer.NickName = _currentname;
+        //PhotonNetwork.LocalPlayer.NickName = _currentname;
 
         Entity entity = playerPrefab.GetComponent<Entity>();
 

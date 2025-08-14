@@ -20,7 +20,8 @@ public class Player_KnockbackState : EntityState
     public override void Enter()
     {
         base.Enter();
-        _rb.linearVelocity = Vector2.zero; // stop current motion
+        Debug.Log("Playkockbacksfx");
+        _rb.linearVelocity = Vector2.zero;
         _rb.AddForce(_direction * _force, ForceMode2D.Impulse);
         _stateTimer = _duration;
     }

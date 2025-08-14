@@ -54,6 +54,7 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
 
         if (Beats(_currentFormIndex, otherPlayer._currentFormIndex))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.MutationSound);
             PhotonNetwork.LocalPlayer.AddScore(10);
             _xpmanager.AddEnergy((int)_xpAmount);
             otherPlayer.photonView.Owner.AddScore(-5);
@@ -85,9 +86,7 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
             formIndex = 2;
 
         if (formIndex != -1)
-        {
             photonView.RPC(nameof(MutateToForm), RpcTarget.AllBuffered, formIndex, 10);
-        }
     }
 
     [PunRPC]
@@ -104,6 +103,7 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
         PhotonNetwork.Destroy(gameObject);
         string newFormName = _networkmanager._formPrefabNames[formIndex];
         GameObject newForm = PhotonNetwork.Instantiate(newFormName, position, rotation, 0, new object[] { formIndex });
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.MutationSound);
 
         if (newForm.GetComponent<PhotonView>().IsMine)
         {

@@ -42,7 +42,8 @@ public class Skill_Knockback : Skill_Base
                 entity.photonView.RPC(nameof(Stone.ApplyKnockbackState), entity.photonView.Owner, direction.x, direction.y, _force, 0.3f);
             }
         }
-        Debug.Log("Knockback skill triggered!");
+
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.StoneKnockbackSound);
     }
 
     private void OnDrawGizmosSelected()

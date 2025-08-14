@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviourPunCallbacks
     {
         Vector3 hitPosition = transform.position;
         PhotonNetwork.Instantiate("VFX_Hit", hitPosition, Quaternion.identity);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.HitSound);
 
         if (other.CompareTag("Player"))
         {
