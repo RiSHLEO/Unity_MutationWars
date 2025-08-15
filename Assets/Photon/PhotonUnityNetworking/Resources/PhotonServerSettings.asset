@@ -58,6 +58,7 @@ MonoBehaviour:
   - RPC_StartInvul
   - RPC_EndInvulVisual
   - RPC_StartInvulVisual
+  - SendLocalNameToOthers
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

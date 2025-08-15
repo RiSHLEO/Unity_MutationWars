@@ -11273,6 +11273,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 564440013}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 3a8f435102a1e73418ae8f2102fca348, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 2037028454}
         m_TargetAssemblyTypeName: NetworkManager, Assembly-CSharp
         m_MethodName: ConnectToServer
@@ -15707,7 +15719,7 @@ MonoBehaviour:
   VeilInvulSound: {fileID: 8300000, guid: b85a2ad71416eb64788867ffa42501d1, type: 3}
   BladeDashSound: {fileID: 8300000, guid: ae35828230ad23f429f4239e5c8cc0c1, type: 3}
   GameOverSound: {fileID: 8300000, guid: 3ab67ecf663d44a438620bc1c9c12b67, type: 3}
-  ButtonSound: {fileID: 0}
+  ButtonSound: {fileID: 8300000, guid: 3a8f435102a1e73418ae8f2102fca348, type: 3}
 --- !u!4 &564440014
 Transform:
   m_ObjectHideFlags: 0
@@ -53685,6 +53697,8 @@ GameObject:
   - component: {fileID: 7154575685808965518}
   - component: {fileID: 7154575685808965517}
   - component: {fileID: 7154575685808965519}
+  - component: {fileID: 7154575685808965521}
+  - component: {fileID: 7154575685808965520}
   m_Layer: 11
   m_Name: Agent
   m_TagString: Agent
@@ -53888,6 +53902,45 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+--- !u!114 &7154575685808965520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368364463362590915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 7154575685808965521}
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &7154575685808965521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368364463362590915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

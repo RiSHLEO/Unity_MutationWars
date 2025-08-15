@@ -1,6 +1,7 @@
 using System.Collections;
 using Photon.Pun;
 using Photon.Pun.UtilityScripts;
+using TMPro;
 using UnityEngine;
 
 public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCallback
@@ -10,6 +11,7 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
 
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private ShootingDataSO _shootingData;
+    [SerializeField] private TextMeshProUGUI _playerName;
     [SerializeField] private TrailRenderer _trailRenderer;
 
     [Header("Mutation Details")]
@@ -26,6 +28,7 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
     {
         _xpmanager = XPManager.Instance;
         _networkmanager = NetworkManager.Instance;
+        _playerName.text = photonView.Owner.NickName;
     }
 
     private void Update()
