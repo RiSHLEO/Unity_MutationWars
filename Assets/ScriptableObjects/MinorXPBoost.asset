@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MinorXPBoost
   m_EditorClassIdentifier: 
   PowerupName: MinorXpBoost
-  Icon: {fileID: 21300000, guid: da3698a1cf61dc244a0fc0b70ba0e709, type: 3}
+  Icon: {fileID: -5511982322241440918, guid: b1ad04d4470426a4fa3b50d7ee60d017, type: 3}
   Duration: 10
   _xpMultiplier: 1.2

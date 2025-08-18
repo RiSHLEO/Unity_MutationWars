@@ -23,9 +23,10 @@ public class PowerupManager : MonoBehaviour
 
     public void PowerupApply(PowerupSO powerup)
     {
-        _powerupName.text = powerup.PowerupName;
-        _powerupName.gameObject.SetActive(true);
+        if(_powerupName != null)
+            _powerupName.text = powerup.PowerupName;
 
+        _powerupName.gameObject.SetActive(true);
         string key = powerup.PowerupName;
 
         if (_activePowerups.ContainsKey(key))

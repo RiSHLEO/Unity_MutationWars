@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MinorSpeedBoost
   m_EditorClassIdentifier: 
   PowerupName: MinorSpeedBoost
-  Icon: {fileID: 21300000, guid: c698a55790601dc44b88a505cc5ed454, type: 3}
+  Icon: {fileID: -1274967292748549190, guid: 629d6c07b6d965749a53e9eea20d13f4, type: 3}
   Duration: 5
   SpeedMultiplier: 1.2

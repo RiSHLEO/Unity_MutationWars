@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Knockback
   m_EditorClassIdentifier: 
   SkillName: Knockback
-  Icon: {fileID: 21300000, guid: f1072dccea8269a4f9c37bc8a832630a, type: 3}
+  Icon: {fileID: -765150924802650856, guid: f449eb6a93407bb43a387500f42d2e70, type: 3}
   Cooldown: 7

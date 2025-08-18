@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   SkillName: Dash
-  Icon: {fileID: 21300000, guid: 316a800849069f9498bd6aec28f6ff5b, type: 3}
+  Icon: {fileID: -4609764937589784581, guid: 9fa01c235176fb242a04f1604b36eafa, type: 3}
   Cooldown: 5

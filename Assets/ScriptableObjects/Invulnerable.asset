@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Invulnerable
   m_EditorClassIdentifier: 
   SkillName: Invul
-  Icon: {fileID: 21300000, guid: 6c9b2cbd0cb425140b4f3f840dc58a4d, type: 3}
+  Icon: {fileID: 4476896103829022335, guid: e80cca700d15bb843b9e27401013bc53, type: 3}
   Cooldown: 10
