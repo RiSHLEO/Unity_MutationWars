@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip BladeDashSound;
     public AudioClip GameOverSound;
     public AudioClip ButtonSound;
+
+    [Header("Mute Button Sprites")]
+    [SerializeField] private Image _buttonImage;
+    [SerializeField] private Sprite _soundOnSprite;
+    [SerializeField] private Sprite _soundOffSprite;
 
     public static AudioManager Instance { get; private set; }
 
@@ -41,6 +47,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip clip)
     {
-        MusicSource.PlayOneShot(clip);
+        SFXSource.PlayOneShot(clip);
+    }
+
+    public void ToggleMute()
+    {
+        MusicSource.mute = !MusicSource.mute;
+        _buttonImage.sprite = MusicSource.mute ? _soundOffSprite : _soundOnSprite;
     }
 }
