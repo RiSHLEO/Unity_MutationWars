@@ -48,7 +48,7 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
         if (!photonView.IsMine) return;
 
         MutationHandler otherPlayer = collision.GetComponent<MutationHandler>();
-
+        
         if (otherPlayer == null) return;
 
         Veil otherVeil = otherPlayer.GetComponent<Veil>();
@@ -67,9 +67,9 @@ public class MutationHandler : MonoBehaviourPunCallbacks, IPunInstantiateMagicCa
 
     bool Beats(int myIndex, int theirIndex)
     {
-        // Stone(0) beats Blade(2)
-        // Blade(2) beats Veil(1)
-        // Veil(1) beats Stone(0)
+        // White(0) beats Green(2)
+        // Green(2) beats Red(1)
+        // Red(1) beats White(0)
 
         return (myIndex == 0 && theirIndex == 2)
             || (myIndex == 2 && theirIndex == 1)

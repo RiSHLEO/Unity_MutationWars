@@ -7,6 +7,7 @@ public class MainTrainedAgent : Agent
 {
     [SerializeField] private Transform _goal;
     [SerializeField] private float _moveSpeed = 12f;
+    [SerializeField] private Transform[] spawnPoints;
 
     private Rigidbody2D _rb;
     private Rigidbody2D _goalRb;
@@ -45,21 +46,10 @@ public class MainTrainedAgent : Agent
     private void SpawnObjects()
     {
         transform.localRotation = Quaternion.identity;
+        int index = Random.Range(0, spawnPoints.Length);
+        Transform chosenSpawn = spawnPoints[index];
 
-        Vector3 agentPos = Vector3.zero;
-        int attempts = 0;
-        do
-        {
-            agentPos = new Vector3(Random.Range(-23f, 20f), Random.Range(-9f, 11f), 0f);
-            attempts++;
-            if (attempts > 100)
-            {
-                Debug.LogWarning("Failed to find valid agent spawn position after 100 attempts.");
-                break;
-            }
-        } while (!IsPositionValid(agentPos, 0.5f));
-
-        transform.localPosition = agentPos;
+        transform.position = chosenSpawn.position;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -115,6 +105,7 @@ public class MainTrainedAgent : Agent
         {
             AddReward(3.0f);
             CummulativeReward = GetCumulativeReward();
+            FindFirstObjectByType<GameManager>().PlayerHit();
             EndEpisode();
         }
 

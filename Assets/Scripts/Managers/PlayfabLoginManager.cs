@@ -2,6 +2,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayfabLoginManager : MonoBehaviour
 {
@@ -17,8 +18,7 @@ public class PlayfabLoginManager : MonoBehaviour
     [SerializeField] private TMP_InputField _loginPassword;
 
     [Header("Buttons")]
-    [SerializeField] private GameObject _SinglePlayerButton;
-    [SerializeField] private GameObject _MultiPlayerButton;
+    [SerializeField] private GameObject _gameModeUI;
     [SerializeField] private GameObject _loginUI;
     [SerializeField] private GameObject _registerUI;
 
@@ -67,8 +67,7 @@ public class PlayfabLoginManager : MonoBehaviour
 
             _registerUI.SetActive(false);
             _loginUI.SetActive(false);
-            _SinglePlayerButton.SetActive(true);
-            _MultiPlayerButton.SetActive(true);
+            _gameModeUI.SetActive(true);
         },
         PlayfabFailure);
     }
@@ -76,5 +75,10 @@ public class PlayfabLoginManager : MonoBehaviour
     private void PlayfabFailure(PlayFabError error)
     {
         Debug.Log(error.Error + " : " + error.GenerateErrorReport());
+    }
+
+    public void LoadMainMenuScene()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

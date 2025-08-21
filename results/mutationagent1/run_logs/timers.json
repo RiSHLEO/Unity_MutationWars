@@ -1,0 +1,49 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1755785480",
+        "python_version": "3.10.12 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 19:01:18) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\risha\\miniconda3\\envs\\mlagents\\Scripts\\mlagents-learn --run-id=mutationagent1 --resume",
+        "mlagents_version": "1.1.0",
+        "mlagents_envs_version": "1.1.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.2.2+cu121",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1755785513"
+    },
+    "total": 32.73460940000223,
+    "count": 1,
+    "self": 0.011575000004086178,
+    "children": {
+        "run_training.setup": {
+            "total": 0.05001830000037444,
+            "count": 1,
+            "self": 0.05001830000037444
+        },
+        "TrainerController.start_learning": {
+            "total": 32.67301609999777,
+            "count": 1,
+            "self": 0.00014830000145593658,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 32.22937399999864,
+                    "count": 1,
+                    "self": 32.22937399999864
+                },
+                "TrainerController._save_models": {
+                    "total": 0.44349379999766825,
+                    "count": 1,
+                    "self": 0.019468799997412134,
+                    "children": {
+                        "RLTrainer._checkpoint": {
+                            "total": 0.4240250000002561,
+                            "count": 1,
+                            "self": 0.4240250000002561
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

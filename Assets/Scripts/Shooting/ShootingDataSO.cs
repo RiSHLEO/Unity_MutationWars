@@ -3,8 +3,6 @@ public enum ShootingType
 {
     Standard,
     Shotgun,
-    Homing,
-    Piercing
 }
 
 [CreateAssetMenu(fileName = "New Shooting Data", menuName = "Game/Shooting Data")]

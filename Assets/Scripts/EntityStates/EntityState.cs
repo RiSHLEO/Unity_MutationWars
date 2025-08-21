@@ -48,17 +48,20 @@ public abstract class EntityState
                 && _stateMachine.currentState != veil.InvulState)
             {
                 Debug.Log("InvulState");
+                XPManager.Instance.SpendEnergy(10);
                 _stateMachine.ChangeState(veil.InvulState);
             }
 
             if (_entity is Blade blade && blade.DashState != null && _skillManager.Dash.CanUseSkill())
             {
                 _skillManager.Dash.SetSkillCooldown();
+                XPManager.Instance.SpendEnergy(10);
                 _stateMachine.ChangeState(blade.DashState);
             }
 
             if (_entity is Stone stone && stone.KnockbackState != null && _skillManager.Knockback.CanUseSkill())
             {
+                XPManager.Instance.SpendEnergy(10);
                 _skillManager.Knockback.TryActivate();
             }
         }

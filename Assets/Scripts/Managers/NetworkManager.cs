@@ -27,7 +27,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        Screen.SetResolution(1024, 576, false);
+        Screen.SetResolution(1920, 1080, true);
     }
 
     public void ChangeName(string name)
@@ -74,16 +74,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         AudioManager.Instance.PlayMusic(AudioManager.Instance.BackgroundSound);
 
         int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
-
         int spawnIndex = Mathf.Clamp(playerCount - 1, 0, playerCount -  1);
         Vector3 spawnPosition = _spawnPoints[spawnIndex].position;
-
         int formIndex = (playerCount - 1) % 3;
 
         string prefabName = _formPrefabNames[formIndex];
         GameObject playerPrefab = PhotonNetwork.Instantiate(prefabName, spawnPosition, Quaternion.identity);
-        //PhotonNetwork.LocalPlayer.NickName = _currentname;
-
         Entity entity = playerPrefab.GetComponent<Entity>();
 
         if (entity.photonView.IsMine)
